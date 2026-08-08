@@ -1,0 +1,16 @@
+{
+  "name": "mongodb",
+  "dependencies": {
+    "mongoose": "^8.18.0"
+  },
+  "copy": [
+    "config"
+  ],
+   "env": {
+    "MONGODB_URI": "mongodb://localhost:27017/myDB"
+  },
+  "server": {
+    "imports": "import connectDB from './config/db.js';",
+    "connection": "await connectDB();"
+  }
+}
