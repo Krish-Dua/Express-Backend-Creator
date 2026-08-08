@@ -199,7 +199,6 @@ export async function generateProject(config) {
 
   const exists = await fs.pathExists(targetDirectory);
   const spinner = ora("Checking directory availability...").start();
-  await new Promise((resolve) => setTimeout(resolve, 2000));
 
   if (exists && !config.useCurrentDirectory) {
     spinner.fail(chalk.red(`Directory "${config.projectName}" already exists.`));
@@ -232,6 +231,8 @@ export async function generateProject(config) {
 
   spinner.succeed(chalk.bgYellow("Project scaffolding complete."));
   console.log();
+
+  global.scaffoldingDone = true;
 
   await runPostSetup(
     targetDirectory,
